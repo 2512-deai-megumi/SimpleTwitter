@@ -14,10 +14,10 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.StringUtils;
 
+import capter6.beans.Message;
 import capter6.beans.User;
 import capter6.logging.InitApplication;
 import capter6.service.MessageService;
-import capter6.beans.Message;
 
 @WebServlet(urlPatterns = { "/message" })
 public class MessageServlet extends HttpServlet {
@@ -70,7 +70,7 @@ public class MessageServlet extends HttpServlet {
 	  log.info(new Object(){}.getClass().getEnclosingClass().getName() +
         " : " + new Object(){}.getClass().getEnclosingMethod().getName());
 
-        if (StringUtils.isEmpty(text)) {
+        if (StringUtils.isBlank(text)) {
             errorMessages.add("メッセージを入力してください");
         } else if (140 < text.length()) {
             errorMessages.add("140文字以下で入力してください");
