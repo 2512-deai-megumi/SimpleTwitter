@@ -7,11 +7,12 @@ import java.sql.Connection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.apache.commons.lang.StringUtils;
+
 import capter6.beans.User;
 import capter6.dao.UserDao;
 import capter6.logging.InitApplication;
 import capter6.utils.CipherUtil;
-import org.apache.commons.lang.StringUtils;
 
 public class UserService {
 
@@ -122,7 +123,7 @@ public class UserService {
 	        Connection connection = null;
 	        try {
 	            // パスワードが入力があった場合のみ、パスワード暗号化
-	        	if(StringUtils.isBlank(user.getPassword())) {
+	        	if(!StringUtils.isBlank(user.getPassword())) {
 	        		String encPassword = CipherUtil.encrypt(user.getPassword());
 		            user.setPassword(encPassword);
 	        	}
