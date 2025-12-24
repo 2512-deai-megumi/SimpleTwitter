@@ -15,6 +15,7 @@ import capter6.beans.UserMessage;
 import capter6.exception.SQLRuntimeException;
 import capter6.logging.InitApplication;
 
+
 public class UserMessageDao {
 
     /**
@@ -32,10 +33,12 @@ public class UserMessageDao {
 
     }
 
-    public List<UserMessage> select(Connection connection, int num) {
+    public List<UserMessage> select(Connection connection,Integer userId, int num) {
 
 	  log.info(new Object(){}.getClass().getEnclosingClass().getName() +
         " : " + new Object(){}.getClass().getEnclosingMethod().getName());
+
+
 
         PreparedStatement ps = null;
         try {
@@ -50,9 +53,17 @@ public class UserMessageDao {
             sql.append("FROM messages ");
             sql.append("INNER JOIN users ");
             sql.append("ON messages.user_id = users.id ");
+            if(userId != null) {
+            	sql.append("WHERE messages.user_id = ? ");
+            }
+
             sql.append("ORDER BY created_date DESC limit " + num);
 
             ps = connection.prepareStatement(sql.toString());
+
+            if(userId != null) {
+            	ps.setInt(1, userId);
+            }
 
             ResultSet rs = ps.executeQuery();
 

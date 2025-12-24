@@ -48,7 +48,11 @@ public class TopServlet extends HttpServlet {
 			  isShowMessageForm = true;
 		  }
 
-		  List<UserMessage> messages = new MessageService().select();
+
+		  String userId = request.getParameter("user_id");
+		  List<UserMessage> messages = new MessageService().select(userId);
+
+		  //List<UserMessage> messages = new MessageService().select();
 
 		  request.setAttribute("messages", messages);
 		  request.setAttribute("isShowMessageForm", isShowMessageForm);
