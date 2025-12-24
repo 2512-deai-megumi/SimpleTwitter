@@ -31,13 +31,11 @@ public class TopServlet extends HttpServlet {
 	    public TopServlet() {
 	        InitApplication application = InitApplication.getInstance();
 	        application.init();
-
 	    }
 
 	    @Override
 	    protected void doGet(HttpServletRequest request, HttpServletResponse response)
 	            throws IOException, ServletException {
-
 
 		  log.info(new Object(){}.getClass().getEnclosingClass().getName() +
 	        " : " + new Object(){}.getClass().getEnclosingMethod().getName());
@@ -48,15 +46,11 @@ public class TopServlet extends HttpServlet {
 			  isShowMessageForm = true;
 		  }
 
-
 		  String userId = request.getParameter("user_id");
 		  List<UserMessage> messages = new MessageService().select(userId);
-
-		  //List<UserMessage> messages = new MessageService().select();
 
 		  request.setAttribute("messages", messages);
 		  request.setAttribute("isShowMessageForm", isShowMessageForm);
 	      request.getRequestDispatcher("/top.jsp").forward(request, response);
-
     }
 }

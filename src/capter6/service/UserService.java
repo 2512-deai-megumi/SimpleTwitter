@@ -59,7 +59,6 @@ public class UserService {
 	        }
 	    }
 
-
 	    public User select(String accountOrEmail, String password) {
 
 	  	  log.info(new Object(){}.getClass().getEnclosingClass().getName() +
@@ -90,7 +89,6 @@ public class UserService {
 
 	    public User select(int userId) {
 
-
 	        log.info(new Object(){}.getClass().getEnclosingClass().getName() +
 	        " : " + new Object(){}.getClass().getEnclosingMethod().getName());
 
@@ -112,7 +110,6 @@ public class UserService {
 	        } finally {
 	            close(connection);
 	        }
-
 
 	    }
 	    public void update(User user) {
@@ -143,7 +140,4 @@ public class UserService {
 	            close(connection);
 	        }
 	    }
-
-
-
 }

@@ -30,15 +30,12 @@ public class UserMessageDao {
     public UserMessageDao() {
         InitApplication application = InitApplication.getInstance();
         application.init();
-
     }
 
     public List<UserMessage> select(Connection connection,Integer userId, int num) {
 
 	  log.info(new Object(){}.getClass().getEnclosingClass().getName() +
         " : " + new Object(){}.getClass().getEnclosingMethod().getName());
-
-
 
         PreparedStatement ps = null;
         try {
@@ -56,9 +53,7 @@ public class UserMessageDao {
             if(userId != null) {
             	sql.append("WHERE messages.user_id = ? ");
             }
-
             sql.append("ORDER BY created_date DESC limit " + num);
-
             ps = connection.prepareStatement(sql.toString());
 
             if(userId != null) {
@@ -78,7 +73,6 @@ public class UserMessageDao {
     }
 
     private List<UserMessage> toUserMessages(ResultSet rs) throws SQLException {
-
 
 	  log.info(new Object(){}.getClass().getEnclosingClass().getName() +
         " : " + new Object(){}.getClass().getEnclosingMethod().getName());
@@ -101,11 +95,4 @@ public class UserMessageDao {
             close(rs);
         }
     }
-
-
-
 }
-
-
-
-

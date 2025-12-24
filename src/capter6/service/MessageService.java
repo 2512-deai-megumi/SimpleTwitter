@@ -30,7 +30,6 @@ public class MessageService {
     public MessageService() {
         InitApplication application = InitApplication.getInstance();
         application.init();
-
     }
 
     public void insert(Message message) {
@@ -75,7 +74,6 @@ public class MessageService {
                if(!StringUtils.isEmpty(userId)) {
                    id = Integer.parseInt(userId);
                }
-
                /*
                 * messageDao.selectに引数としてInteger型のidを追加
                 * idがnullだったら全件取得する
@@ -83,7 +81,6 @@ public class MessageService {
                 */
               List<UserMessage> messages = new UserMessageDao().select(connection, id, LIMIT_NUM);
               commit(connection);
-
               return messages;
           } catch (RuntimeException e) {
               rollback(connection);
@@ -98,9 +95,4 @@ public class MessageService {
           }
       }
   }
-
-
-
-
-
 

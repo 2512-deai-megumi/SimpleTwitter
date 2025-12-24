@@ -68,7 +68,6 @@ public class SignUpServlet extends HttpServlet {
 
     private User getUser(HttpServletRequest request) throws IOException, ServletException {
 
-
 	  log.info(new Object(){}.getClass().getEnclosingClass().getName() +
         " : " + new Object(){}.getClass().getEnclosingMethod().getName());
 
@@ -82,7 +81,6 @@ public class SignUpServlet extends HttpServlet {
     }
 
     private boolean isValid(User user, List<String> errorMessages) {
-
 
 	  log.info(new Object(){}.getClass().getEnclosingClass().getName() +
         " : " + new Object(){}.getClass().getEnclosingMethod().getName());
